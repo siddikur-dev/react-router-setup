@@ -2,27 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="text-center py-10 border-t mt-10">
+    <div className="text-center py-10 mt-10">
       {/* Logo + Title */}
-      <a
-        href="https://hero-apps-store.netlify.app"
-        target="_blank"
-        rel="noreferrer"
-        className="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900"
-      >
-        <img
-          src="https://www.svgrepo.com/show/499962/music.svg"
-          className="h-12 mr-3 sm:h-9"
-          alt="Hero Apps Logo"
-        />
-        Hero Apps Store
-      </a>
 
       {/* Footer Text */}
       <span className="block text-sm text-gray-500">
         © 2024-2025 <strong>React Router Setup</strong>. All Rights Reserved.{" "}
-        
-        
       </span>
 
       {/* Social Icons */}
@@ -54,7 +39,6 @@ const Footer = () => {
             </svg>
           </a>
         </li>
-
 
         {/* Twitter */}
         <li>
