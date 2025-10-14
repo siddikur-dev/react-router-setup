@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="flex flex-wrap items-center justify-between p-3 bg-teal-200/20">
       {/* Logo */}
       <img
-        src="https://tailwindflex.com/public/favicon.ico"
+        src="	https://i.ibb.co.com/xKhBXvjm/Siam.jpg"
         className="h-10 w-10"
         alt="Logo"
       />
