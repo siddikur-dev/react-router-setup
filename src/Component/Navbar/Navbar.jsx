@@ -1,78 +1,67 @@
 import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { NavLink } from "react-router";
+import ThemeToggle from "../../Ui/ThemeToggle/ThemeToggle";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="flex flex-wrap items-center justify-between p-3 bg-teal-200/20">
-      {/* Logo */}
-      <img
-        src="	https://i.ibb.co.com/xKhBXvjm/Siam.jpg"
-        className="h-10 w-10"
-        alt="Logo"
-      />
+    <nav className="bg-base-300 shadow-md w-full ">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+        {/* Brand Logo / Name */}
+        <h1 className="text-2xl font-bold text-primary tracking-wide">
+          MyBrand
+        </h1>
 
-      {/* Hamburger Button (Mobile) */}
-      <div className="flex md:hidden">
-        <button onClick={() => setMenuOpen(!menuOpen)} id="hamburger">
-          <img
-            className={`${menuOpen ? "hidden" : "block"}`}
-            src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png"
-            width="48"
-            height="48"
-            alt="Open Menu"
-          />
-          <img
-            className={`${menuOpen ? "block" : "hidden"}`}
-            src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png"
-            width="48"
-            height="48"
-            alt="Close Menu"
-          />
-        </button>
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
+          <NavLink className="text-secondary transition duration-200 cursor-pointer">
+            Home
+          </NavLink>
+          <NavLink className="text-secondary transition duration-200 cursor-pointer">
+            About
+          </NavLink>
+          <NavLink className="text-secondary transition duration-200 cursor-pointer">
+            Items
+          </NavLink>
+          <ThemeToggle></ThemeToggle>
+        </ul>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu} className="text-gray-700">
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Menu Links */}
-      <div
-        className={`${
-          menuOpen ? "block" : "hidden"
-        } w-full md:w-auto md:flex text-right font-bold mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none`}
-      >
-        <a
-          href="#"
-          className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
-        >
-          Home
-        </a>
-        <a
-          href="#"
-          className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
-        >
-          Products
-        </a>
-        <a
-          href="#"
-          className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
-        >
-          Pricing
-        </a>
-        <a
-          href="#"
-          className="block md:inline-block text-teal-900 hover:text-teal-500 px-3 py-3 border-b-2 border-teal-900 md:border-none"
-        >
-          Contact
-        </a>
-      </div>
-
-      {/* Create Account Button */}
-      <a
-        href="#"
-        className={`${
-          menuOpen ? "block" : "hidden"
-        } md:flex w-full md:w-auto px-4 py-2 text-right bg-teal-900 hover:bg-teal-500 text-white md:rounded`}
-      >
-        Create Account
-      </a>
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-md border-t border-gray-100">
+          <ul className="flex flex-col items-center py-4 space-y-4 text-gray-700 font-medium">
+            <NavLink
+              onClick={() => setIsOpen(false)}
+              className="hover:text-blue-600 transition duration-200 cursor-pointer"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              onClick={() => setIsOpen(false)}
+              className="hover:text-blue-600 transition duration-200 cursor-pointer"
+            >
+              About
+            </NavLink>
+            <NavLink
+              onClick={() => setIsOpen(false)}
+              className="hover:text-blue-600 transition duration-200 cursor-pointer"
+            >
+              Items
+            </NavLink>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
